@@ -8,10 +8,11 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
+      "ar.com.restba" % "restba" % "1.0.2"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-      // Add your own project settings here      
+      resolvers += ("Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository")
     )
 
 }

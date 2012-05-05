@@ -9,42 +9,59 @@ import play.api.libs.json.Json
 import models.Film
 
 object Films extends Controller {
-  
-  def list = Action {
 
-    val films = Seq(
-      Film("1", "La banda del openBafici"),
-      Film("2", "La banda del openBafici II")
-    )
+  def home() = Action {
+    Ok(views.html.index())
+  }
 
-    Ok(views.html.list(films = films))
+  def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
+
+    Ok(views.html.list(page, sort, filter, Seq[Film]()))
+    
+    val client = new ar.com.restba.DefaultRestBAClient("http://zenithsistemas.com:9200")
+    val connection = client.fetchConnectionRestBaAsJson(filter, page)
+    println(connection.getMaxPages())
+    val firstPageIterator = connection.iterator()
+    
+    val firstPage = firstPageIterator.next().iterator()
+    
+    var l = List[Film]()
+    
+    while(firstPage.hasNext()) {
+      val item = firstPage.next() 
+      println("JSON: " + item)
+      try {
+      val film = Film(
+	      item.getString("id"),
+		  item.getString("title"),
+		  item.getString("title_es"),
+		  item.getString("url_ticket"),
+		  item.getLong("year"),
+		  item.getString("generes_list"), 
+		  item.getString("cast"),
+		  item.getString("id_youtube"), 
+		  item.getString("filepic1"), 
+		  item.getString("prodteam"), 
+		  item.getString("synopsis_es"),
+		  item.getString("synopsis_en"),
+		  item.getLong("duration"),
+		  item.getString("director"), 
+		  item.getString("updated_ts")
+      )
+      
+      l =  film :: l
+       } catch { 
+       case e:Exception => println("json apping error.")
+       } 
+      
+    }
+        
+    Ok(views.html.list(page, sort, filter, l.asInstanceOf[Seq[Film]] ))
   }
 
   def show(id: String) = Action {
-    //2732fbf4-4e55-4794-8e98-e5d5fa6a0419-4
-    val film = Film.findById(id)
-    film.map { film =>
-      Ok(views.html.show(film))  
-    }.getOrElse {
-      NotFound
-    }
-
-  }
-
-  def test() = Action {
-    var query = Film.endpoint + """_search?q=synopsis_es:'buenos aires'"""
-
-    query = "http://zenithsistemas.com:9200/gcba/bafici/2732fbf4-4e55-4794-8e98-e5d5fa6a0419-4?fields=id,title,title_es,url_ticket,year,generes_list,cast,id_youtube,filepic1,prodteam,synopsis_es,synopsis_en,duration,director,updated_ts"
-
-    Async {
-      WS.url(query).get().map { response =>
-        val json = Json.parse(response.body)
-        val pic = (json \ "fields" \ "filepic1").as[String]
-        Ok(views.html.test(query, pic))
-      }
-    }
-
-
+    val film = Film("1", "La banda del openBafici")
+    Ok(views.html.show(film))
   }
 
 }

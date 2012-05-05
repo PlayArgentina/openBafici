@@ -85,9 +85,7 @@ object Film {
   /**
    * Parse a Film from a json element
    */
-
-  val simple = { 
-
+  val simple = {
     get[String]("film.id") ~
     get[String]("film.name") map {
       case id~name => Film(id, name)
