@@ -51,7 +51,7 @@ object Films extends Controller {
       
     }
         
-    Ok(views.html.list(page, sort, filter, List[Film]()))
+    Ok(views.html.list(page, sort, filter, l.asInstanceOf[Seq[Film]] ))
   }
 
   def show(id: String) = Action {
