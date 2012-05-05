@@ -32,6 +32,7 @@ object Films extends Controller {
       println("JSON: " + item)
       try {
       val film = Film(
+
 	      item.getString("id"),
 		  item.getString("title"),
 		  item.getString("title_es"),

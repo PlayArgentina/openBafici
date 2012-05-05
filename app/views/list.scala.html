@@ -1,14 +1,13 @@
 @(page: Long = 1, sort: String = "", filter: String = "", films: Seq[Film] = Seq[Film]())
 
-@main("Open Bafici") {
-
+@main("Open Bafici"){<p></p>}{
 <form class="form-search">
   <input id="filterText" type="text" class="search-query" />
   <br/>
   <br/>
   <a id="buscar" class="btn btn-large">Buscar</a>
 </form>
-    <p>
+    
         @if(films.size == 0) {
         	 @if(filter == "") {
             	<em>Busque algo</em>
@@ -37,18 +36,5 @@
 				    </tbody>        	    
     			</table>
         }
-    </p>
-
-<script type="text/javascript">
- $("#buscar").click(function(e){
-	 var filter = $("#filterText").val();
-	 var page = 1;
-	 var sort = "";
-	 var url = "/films?page="+page+"&sort="+sort+"&filter="+filter;
-	 
- 	 window.location= url;
- });
-
-</script>
-
+		
 }
