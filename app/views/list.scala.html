@@ -18,40 +18,12 @@
         } else {
            <em> @films.size Elements</em>        
         }
-        
-        <table class="table table-striped">
-    				<thead>
- 				   	<tr>
-				    	<th>Titulo</th>
-				    	<th class="span1"></th>
-				    </tr>
-				    </thead>
-				    <tbody>
-				    		<tr>
-				    			<td>Titulo</td>
-				    			<td><a href="@routes.Films.show("2")" class="btn btn-success">+</a></td>				    			
-				    		</tr>	
-				    		<tr>
-				    			<td>Titulo</td>
-				    			<td><a class="btn btn-success">+</a></td>
-				    		</tr>	
-				    		<tr>
-				    			<td>Titulo</td>
-				    			<td><a class="btn btn-success">+</a></td>
-				    		</tr>	
-				    		<tr>
-				    			<td>Titulo</td>
-				    			<td><a class="btn btn-success">+</a></td>
-				    		</tr>	
-				    </tbody>        	    
-    			</table>
-        
-        
+
         @if(films.size > 0) {
         	    <table class="table table-striped">
     				<thead>
  				   	<tr>
-				    	<th>T’tulo</th>
+				    	<th>Tï¿½tulo</th>
 				    	<th></th>
 				    </tr>
 				    </thead>
@@ -59,7 +31,7 @@
 				    	@for(film:Film <- films){
 				    		<tr>
 				    			<td>@film.title</td>
-				    			<td><a href="@routes.Films.show(film.id)" class="btn btn-success">+</a></td>
+				    			<td><a href="@routes.FilmsElastic.show(film.id)" class="btn btn-success">+</a></td>
 				    		</tr>	
 				    	}
 				    </tbody>        	    

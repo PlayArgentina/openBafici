@@ -45,7 +45,7 @@ object Film {
     val fields = json \ "fields"
     
     Film(
-      id                  = readJson(fields, "id", ""),
+      id                  = readJson(json, "_id", ""),
       title               = readJson(fields, "title", "unknown film"),
       title_es            = readJson(fields, "title_es", "desconocido"),
       url_ticket          = readJson(fields, "url_ticket", "http://google.com"),

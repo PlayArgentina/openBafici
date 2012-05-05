@@ -5,19 +5,24 @@ import play.api.mvc._
 
 import play.api.libs.ws.WS
 import play.api.libs.json.Json
-
 import models.Film
+
 
 object FilmsElastic extends Controller {
 
   def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
 
     val films = Seq(
-      Film("1", "La banda del openBafici"),
-      Film("2", "La banda del openBafici II")
+      Film.findById("2732fbf4-4e55-4794-8e98-e5d5fa6a0419-262").get,
+      Film.findById("b6f980d6-5070-48b7-aeea-41d945b34175-96").get,
+      Film.findById("b6f980d6-5070-48b7-aeea-41d945b34175-130").get,
+      Film.findById("2732fbf4-4e55-4794-8e98-e5d5fa6a0419-245").get,
+      Film.findById("b6f980d6-5070-48b7-aeea-41d945b34175-113").get
     )
 
-    Ok(views.html.list(films = films))
+    Ok(views.html.list(
+      page = 1, sort = "", filter = "", films = films
+    ))
   }
 
   def show(id: String) = Action {
