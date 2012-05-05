@@ -13,9 +13,45 @@ object Films extends Controller {
   
   def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
     
-    //TODO query
+    val client = new ar.com.restba.DefaultRestBAClient("http://zenithsistemas.com:9200")
+    val connection = client.fetchConnectionRestBaAsJson(filter, page)
+    println(connection.getMaxPages())
+    val firstPageIterator = connection.iterator()
     
-    Ok(views.html.list(page, sort, filter, Seq[Film]()))
+    val firstPage = firstPageIterator.next().iterator()
+    
+    var l = List[Film]()
+    
+    while(firstPage.hasNext()) {
+      val item = firstPage.next() 
+      println("JSON: " + item)
+      try {
+      val film = Film(
+	      0, 
+		  "unknown film",
+		   item.getString("name_es"),
+		  "http://google.com",
+		   1984,
+		   "ninguno genero",
+		   "Van Damme",
+		   "werwerwer",
+		  "image.png",
+		   "Scorcese",
+		  "sinopsis",
+		  "sinopsis",
+		  95,
+		  "Fulano",
+		   "20-20-1945"
+      )
+      
+      l =  film :: l
+       } catch { 
+       case e:Exception => println("json apping error.")
+       } 
+      
+    }
+        
+    Ok(views.html.list(page, sort, filter, List[Film]()))
   }
 
   def show(id: String) = Action {
