@@ -25,7 +25,8 @@ $(function() {
 
 function fx(html) {
     $('#container').html(html);
-    $('#screen, #title').show();
+    $('#screen').show();
+    $('#title').show();
 
     setInterval(function() {
         $($('#container img').get(Math.floor(Math.random() * $('#container img').length)))
