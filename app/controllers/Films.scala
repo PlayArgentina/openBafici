@@ -6,15 +6,15 @@ import play.api.mvc._
 import models.Film
 
 object Films extends Controller {
-  
+
   def home() = Action {
-    Redirect(routes.Films.list(1,"",""))
+    Ok(views.html.index())
   }
-  
+
   def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
-    
+
     //TODO query
-    
+
     Ok(views.html.list(page, sort, filter, Seq[Film]()))
   }
 
