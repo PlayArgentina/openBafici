@@ -28,20 +28,20 @@ object Films extends Controller {
       try {
       val film = Film(
 	      0, 
-		  "unknown film",
-		   item.getString("name_es"),
-		  "http://google.com",
-		   1984,
-		   "ninguno genero",
-		   "Van Damme",
-		   "werwerwer",
-		  "image.png",
-		   "Scorcese",
-		  "sinopsis",
-		  "sinopsis",
-		  95,
-		  "Fulano",
-		   "20-20-1945"
+		  item.getString("title"),
+		  item.getString("title_es"),
+		  item.getString("url_ticket"),
+		  item.getLong("year"),
+		  item.getString("generes_list"), 
+		  item.getString("cast"),
+		  item.getString("id_youtube"), 
+		  item.getString("filepic1"), 
+		  item.getString("prodteam"), 
+		  item.getString("synopsis_es"),
+		  item.getString("synopsis_en"),
+		  item.getLong("duration"),
+		  item.getString("director"), 
+		  item.getString("updated_ts")
       )
       
       l =  film :: l
