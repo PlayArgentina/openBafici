@@ -27,7 +27,7 @@ object Films extends Controller {
       println("JSON: " + item)
       try {
       val film = Film(
-	      0, 
+	      "0", 
 		  item.getString("title"),
 		  item.getString("title_es"),
 		  item.getString("url_ticket"),

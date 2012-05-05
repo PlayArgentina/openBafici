@@ -31,3 +31,16 @@ body {
 .trailer{
 	max-width:560px;
 }
+
+#langSelector{
+	float:right;
+}
+
+.en,
+.es {
+	display:none;
+}
+
+.activeLang{
+	display:inline-block;
+}
