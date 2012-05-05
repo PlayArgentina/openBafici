@@ -19,7 +19,7 @@ object Films extends Controller {
   }
 
   def show(id: String) = Action {
-    val film = Film(1, "La banda del openBafici")
+    val film = Film("1", "La banda del openBafici")
     Ok(views.html.show(film))
   }
 

@@ -2,3 +2,32 @@ body {
     padding-bottom: 40px;
     padding-top: 60px;
 }
+
+.filmItem {
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+}
+
+.filmItem:hover {
+	background-color:#ccc;
+}
+
+.filmItem .key {
+	min-height: 20px;
+	text-align: left;
+	padding-left: 20%;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.filmItem .value {
+	min-height: 20px;
+}
+
+.value .thumb {
+	max-width: 100%;
+}
+
+.trailer{
+	max-width:560px;
+}

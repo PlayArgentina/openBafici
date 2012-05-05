@@ -8,7 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-    "ar.com.restba" % "restba" % "1.0"
+
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
