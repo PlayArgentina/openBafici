@@ -7,8 +7,15 @@ import models.Film
 
 object Films extends Controller {
   
-  def list = Action {
-    Ok(views.html.list())
+  def home() = Action {
+    Redirect(routes.Films.list(1,"",""))
+  }
+  
+  def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
+    
+    //TODO query
+    
+    Ok(views.html.list(page, sort, filter, Seq[Film]()))
   }
 
   def show(id: String) = Action {
