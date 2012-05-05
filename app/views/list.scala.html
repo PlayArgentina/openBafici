@@ -2,7 +2,81 @@
 
 @main("Open Bafici") {
 
-<input type="text" />
-<a id="buscar" class="btn">Buscar</a>
+<form class="form-search">
+  <input id="filterText" type="text" class="search-query" />
+  <br/>
+  <br/>
+  <a id="buscar" class="btn btn-large">Buscar</a>
+</form>
+    <p>
+        @if(films.size == 0) {
+        	 @if(filter == "") {
+            	<em>Busque algo</em>
+        	 } else {
+             	<em>0 Elements</em>
+             }	
+        } else {
+           <em> @films.size Elements</em>        
+        }
+        
+        <table class="table table-striped">
+    				<thead>
+ 				   	<tr>
+				    	<th>Titulo</th>
+				    	<th class="span1"></th>
+				    </tr>
+				    </thead>
+				    <tbody>
+				    		<tr>
+				    			<td>Titulo</td>
+				    			<td><a href="@routes.Films.show("2")" class="btn btn-success">+</a></td>				    			
+				    		</tr>	
+				    		<tr>
+				    			<td>Titulo</td>
+				    			<td><a class="btn btn-success">+</a></td>
+				    		</tr>	
+				    		<tr>
+				    			<td>Titulo</td>
+				    			<td><a class="btn btn-success">+</a></td>
+				    		</tr>	
+				    		<tr>
+				    			<td>Titulo</td>
+				    			<td><a class="btn btn-success">+</a></td>
+				    		</tr>	
+				    </tbody>        	    
+    			</table>
+        
+        
+        @if(films.size > 0) {
+        	    <table class="table table-striped">
+    				<thead>
+ 				   	<tr>
+				    	<th>T’tulo</th>
+				    	<th></th>
+				    </tr>
+				    </thead>
+				    <tbody>
+				    	@for(film:Film <- films){
+				    		<tr>
+				    			<td>@film.title</td>
+				    			<td><a href="@routes.Films.show(film.id)" class="btn btn-success">+</a></td>
+				    		</tr>	
+				    	}
+				    </tbody>        	    
+    			</table>
+        }
+    </p>
+
+<script type="text/javascript">
+ $("#buscar").click(function(e){
+	 var filter = $("#filterText").val();
+	 var page = 1;
+	 var sort = "";
+	 var url = "/films?page="+page+"&sort="+sort+"&filter="+filter;
+	 
+ 	 window.location= url;
+ });
+
+</script>
 
 }

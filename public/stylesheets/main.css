@@ -14,3 +14,32 @@ body {
 #intro #title p { font-size:16pt }
 #intro #title p { margin:10px 0 15px 0; font-size:12pt }
 #intro .button { width:150px; height:60px; background-color:#FF0000; color:#FFF; border:1px solid #DDD; border-radius:7px }
+
+.filmItem {
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+}
+
+.filmItem:hover {
+	background-color:#ccc;
+}
+
+.filmItem .key {
+	min-height: 20px;
+	text-align: left;
+	padding-left: 20%;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.filmItem .value {
+	min-height: 20px;
+}
+
+.value .thumb {
+	max-width: 100%;
+}
+
+.trailer{
+	max-width:560px;
+}

@@ -1,6 +1,129 @@
 @(film: Film)
 
-This is the film!
+@main("Open Bafici") {
 
-id: @film.id <br />
-title: @film.title <br />
+	<div class="filmItem">
+		<div class="btn-group">
+		    <button class="btn btn-warning">Ingles</button>
+		    <button class="btn btn-warning active">Espanol</button>
+	    </div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Id
+		</div>		
+		<div class="value">
+			@film.id
+		</div>
+	</div>	
+	<div class="filmItem">
+		<div class="key">
+			Titulo
+		</div>		
+		<div class="value">
+			@film.title
+		</div>
+	</div>	
+	<div class="filmItem">
+		<div class="key">
+			Titulo
+		</div>		
+		<div class="value">
+			@film.title_es
+		</div>
+	</div>
+	<div class="filmItem">		
+		<div class="value">
+			<img class="thumb" alt="" src="http://www.bafici.gov.ar/home11/photobase/films/@film.filepic1">
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Genero
+		</div>		
+		<div class="value">
+			@film.generes_list
+		</div>
+	</div>		
+	<div class="filmItem">
+		<div class="key">
+			Reparto
+		</div>		
+		<div class="value">
+			@film.cast
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Trailer
+		</div>		
+		<div class="value">
+			<iframe class="trailer visible-desktop" width="560" height="315" src="http://www.youtube.com/embed/@film.id_youtube" frameborder="0" allowfullscreen></iframe>
+			<iframe class="trailer hidden-desktop" width="100%" height="200" src="http://www.youtube.com/embed/@film.id_youtube" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>	
+	<div class="filmItem">
+		<div class="key">
+			Siposis
+		</div>		
+		<div class="value">
+			@film.synopsis_es
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Siposis
+		</div>		
+		<div class="value">
+			@film.synopsis_en
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Director
+		</div>		
+		<div class="value">
+			@film.director
+		</div>
+	</div>	
+	<div class="filmItem">
+		<div class="key">
+			Duracion
+		</div>		
+		<div class="value">
+			@film.duration min.
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			A–o
+		</div>		
+		<div class="value">
+			@film.year
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Fecha
+		</div>		
+		<div class="value">
+			@film.updated_ts
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="key">
+			Productora
+		</div>		
+		<div class="value">
+			@film.prodteam
+		</div>
+	</div>
+	<div class="filmItem">
+		<div class="value">
+			<a class="btn btn-success btn-large" href="@film.url_ticket">COMPRAR TICKET</a>  
+		</div>
+	</div>
+ 
+ 
+ 
+}

@@ -13,13 +13,51 @@ object Films extends Controller {
 
   def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
 
-    //TODO query
-
     Ok(views.html.list(page, sort, filter, Seq[Film]()))
+    
+    val client = new ar.com.restba.DefaultRestBAClient("http://zenithsistemas.com:9200")
+    val connection = client.fetchConnectionRestBaAsJson(filter, page)
+    println(connection.getMaxPages())
+    val firstPageIterator = connection.iterator()
+    
+    val firstPage = firstPageIterator.next().iterator()
+    
+    var l = List[Film]()
+    
+    while(firstPage.hasNext()) {
+      val item = firstPage.next() 
+      println("JSON: " + item)
+      try {
+      val film = Film(
+	      0, 
+		  item.getString("title"),
+		  item.getString("title_es"),
+		  item.getString("url_ticket"),
+		  item.getLong("year"),
+		  item.getString("generes_list"), 
+		  item.getString("cast"),
+		  item.getString("id_youtube"), 
+		  item.getString("filepic1"), 
+		  item.getString("prodteam"), 
+		  item.getString("synopsis_es"),
+		  item.getString("synopsis_en"),
+		  item.getLong("duration"),
+		  item.getString("director"), 
+		  item.getString("updated_ts")
+      )
+      
+      l =  film :: l
+       } catch { 
+       case e:Exception => println("json apping error.")
+       } 
+      
+    }
+        
+    Ok(views.html.list(page, sort, filter, l.asInstanceOf[Seq[Film]] ))
   }
 
   def show(id: String) = Action {
-    val film = Film(1, "La banda del openBafici")
+    val film = Film("1", "La banda del openBafici")
     Ok(views.html.show(film))
   }
 
