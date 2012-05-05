@@ -8,7 +8,7 @@ import models.Film
 object Films extends Controller {
   
   def list = Action {
-    TODO
+    Ok(views.html.list())
   }
 
   def show(id: String) = Action {
