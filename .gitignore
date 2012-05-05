@@ -8,5 +8,10 @@ dist
 .classpath
 .project
 .settings
+
 #sublime files
 *.sublime*
+
+#idea
+.idea/
+openbafici.iml

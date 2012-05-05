@@ -3,15 +3,20 @@ package controllers
 import play.api._
 import play.api.mvc._
 
+import play.api.libs.ws.WS
+import play.api.libs.json.Json
+
 import models.Film
 
 object Films extends Controller {
-  
+
   def home() = Action {
-    Redirect(routes.Films.list(1,"",""))
+    Ok(views.html.index())
   }
-  
+
   def list(page: Long = 1, sort: String = "", filter: String = "") = Action {
+
+    Ok(views.html.list(page, sort, filter, Seq[Film]()))
     
     val client = new ar.com.restba.DefaultRestBAClient("http://zenithsistemas.com:9200")
     val connection = client.fetchConnectionRestBaAsJson(filter, page)
@@ -27,7 +32,8 @@ object Films extends Controller {
       println("JSON: " + item)
       try {
       val film = Film(
-	      "0", 
+
+	      item.getString("id"),
 		  item.getString("title"),
 		  item.getString("title_es"),
 		  item.getString("url_ticket"),
