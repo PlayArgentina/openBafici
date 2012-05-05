@@ -31,14 +31,23 @@ object Film {
   // -- Parsers
   
   /**
-   * Parse a Computer from a ResultSet
+   * Parse a Film from a json element
    */
-  val simple = {
+
+  val simple = { 
+
     get[Long]("film.id") ~
     get[String]("film.name") map {
       case id~name => Film(id, name)
     }
   }
-  
+
+  val fields: String = 
+    "id,title,title_es,url_ticket,year,generes_list,cast,id_youtube,filepic1," +
+    "prodteam,synopsis_es,synopsis_en,duration,director,updated_ts"
+
+
+
+
 }
 

@@ -12,7 +12,13 @@ import utils.Bafici
 object Films extends Controller {
   
   def list = Action {
-    Ok(views.html.list())
+
+    val films = Seq(
+      Film(1, "La banda del openBafici"),
+      Film(2, "La banda del openBafici II")
+    )
+
+    Ok(views.html.list(films = films))
   }
 
   def show(id: String) = Action {
@@ -21,17 +27,35 @@ object Films extends Controller {
   }
 
   def test() = Action {
-    var query = Bafici.endpoint + """_search?pretty=1&q=synopsis_es:'buenos aires'"""
-    //Ok(views.html.test(query))
+    var query = Bafici.endpoint + """_search?q=synopsis_es:'buenos aires'"""
+
+    query = "http://zenithsistemas.com:9200/"
+
+    query = "http://zenithsistemas.com:9200/gcba/bafici/2732fbf4-4e55-4794-8e98-e5d5fa6a0419-4"
+
+    query = "http://zenithsistemas.com:9200/gcba/bafici/2732fbf4-4e55-4794-8e98-e5d5fa6a0419-4?fields=id,title,title_es,url_ticket,year,generes_list,cast,id_youtube,filepic1,prodteam,synopsis_es,synopsis_en,duration,director,updated_ts"
+
+    //Ok(views.html.test(query,"body"))
+
     Async {
-      WS.url("http://zenithsistemas.com:9200/").get().map { response =>
+      val ws = WS.url(query)
+      val wsGet = ws.get()
+
+      WS.url(query).get().map { response =>
+
+        val body = response.body
+
+        //val json = response.json
+
+        //val title = (json).as[String]
+
         Ok(
-          views.html.test(
-            (response.text).as[String]
-          )
+          views.html.test(query, body)
         )
       }
     }
+
+
   }
 
 }
