@@ -5,3 +5,13 @@ project/target
 tmp
 .history
 dist
+.classpath
+.project
+.settings
+
+#sublime files
+*.sublime*
+
+#idea
+.idea/
+openbafici.iml

@@ -25,7 +25,7 @@ object Bafici {
   // http://zenithsistemas.com:9200/gcba/bafici/b6f980d6-5070-48b7-aeea-41d945b34175-130
   def queryById(id: String): JsValue = {
     val query = endpoint + id + "?fields=" + fields
-    return getJson(query)
+    getJson(query)
   }
 
   // endpoint: bafici.endpoint="http://zenithsistemas.com:9200/gcba/bafici/"
