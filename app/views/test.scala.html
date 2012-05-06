@@ -1,8 +1,9 @@
-@(query: String, body: String)
+@(films: Seq[Film])
 
-query: @query <br />
+<ul>
+@for(film <- films) {
+  
+  <li>title: @film.title </li>
 
-body: 
-<textarea>
-@body
-</textarea>
+}
+</ul>

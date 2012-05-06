@@ -3,53 +3,53 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    
-        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-     	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
-    </head>
-    <body>
-     <div class="navbar navbar-fixed-top">
+  <head>
+  <title>@title</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+
+    <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Open Bafici</a>
+          <a class="brand" href="@routes.Films.list()">Open Bafici</a>
           @langSelector
         </div>
       </div>
     </div>
 
     <div class="container" style="text-align:center;">
-        @content
+      @content
     </div>    
+
+  </body>
+</html>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#langSelector a').on("click",function(){
-		console.log('hey!!');
-		var lang = $(this).attr('rel');
-		$('#langSelector a').removeClass('active');
-		$(this).addClass('active');
-		
-		$('.activeLang').removeClass('activeLang');
-		$('.'+lang).addClass('activeLang');
-	});
-	
+  $('#langSelector a').on("click",function(){
+    console.log('hey!!');
+    var lang = $(this).attr('rel');
+    $('#langSelector a').removeClass('active');
+    $(this).addClass('active');
+    
+    $('.activeLang').removeClass('activeLang');
+    $('.'+lang).addClass('activeLang');
+  });
+  
   $("#buscar").on("click",function(e){
-		 var filter = $("#filterText").val();
-		 var page = 1;
-		 var sort = "";
-		 var url = "/films?page="+page+"&sort="+sort+"&filter="+filter;
-		 
-	 	 window.location= url;
-	 });
-});	
+     var filter = $("#filterText").val();
+     var page = 1;
+     var sort = "";
+     var url = "/films?page="+page+"&sort="+sort+"&filter="+filter;
+     
+     window.location= url;
+   });
+}); 
 </script>
- 
-
-    </body>
-</html>
