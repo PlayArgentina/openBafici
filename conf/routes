@@ -3,14 +3,15 @@
 # ~~~~
 
 # Home page
-GET     /                    controllers.Films.home
-GET     /films               controllers.Films.list(page: Long, sort: String, filter: String)
-GET     /film/:id            controllers.Films.show(id: String)
+GET     /                   controllers.FilmsElastic.home
+GET     /films              controllers.FilmsElastic.list(page: Long ?= 1, sort: String ?= "", filter: String ?= "")
+GET     /film/:id           controllers.FilmsElastic.show(id: String)
 
-GET     /elastic/films       controllers.FilmsElastic.list(page: Long, sort: String, filter: String)
-GET     /elastic/film/:id    controllers.FilmsElastic.show(id: String)
+GET     /restba             controllers.FilmsRestBA.home
+GET     /restba/films       controllers.FilmsRestBA.list(page: Long ?= 1, sort: String ?= "", filter: String ?= "")
+GET     /restba/film/:id    controllers.FilmsRestBA.show(id: String)
 
-GET     /test                controllers.FilmsElastic.test
+GET     /test               controllers.FilmsElastic.test
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file       controllers.Assets.at(path="/public", file)

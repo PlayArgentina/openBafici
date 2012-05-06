@@ -8,7 +8,7 @@ import play.api.libs.json.Json
 
 import models.Film
 
-object Films extends Controller {
+object FilmsRestBA extends Controller {
 
   def home() = Action {
     Ok(views.html.index())
