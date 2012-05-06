@@ -10,7 +10,8 @@ object Bafici {
 
   val fields: String = 
     "id,title,title_es,url_ticket,year,generes_list,cast,id_youtube,filepic1," +
-    "prodteam,synopsis_es,synopsis_en,duration,director,updated_ts"
+    "prodteam,synopsis_es,synopsis_en,duration,director,updated_ts," + 
+    "name_en,name_es,description_en,description_es"
 
   val endpoint = isNull(application.configuration.getString("bafici.endpoint"), "")  
 
