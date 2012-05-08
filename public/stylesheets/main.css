@@ -44,10 +44,6 @@ body {
 	max-width:560px;
 }
 
-#langSelector{
-	float:right;
-}
-
 .en,
 .es {
 	display:none;
@@ -55,4 +51,8 @@ body {
 
 .activeLang{
 	display:inline-block;
+}
+
+td.titulo { 
+	vertical-align: middle; 
 }

@@ -1,19 +1,15 @@
 @(film: Film)
 
 @main("Open Bafici") {
-<div id="langSelector" class="btn-group">
+<div id="langSelector" class="btn-group pull-right">
 	<a class="btn btn-warning" rel="en">Inglés</a>
 	<a class="btn btn-warning active" rel="es">Español</a>
 </div>
 } {
 
 <div class="filmItem">
-	<div class="value en">
-		<h2>@film.title</h2>
-	</div>
-	<div class="value es activeLang">
-		<h2>@film.title_es</h2>
-	</div>
+	<h2 class="en">@film.title</h2>
+	<h2 class="es activeLang">@film.title_es</h2>
 </div>	
 <div class="filmItem">		
 	<div class="value">
